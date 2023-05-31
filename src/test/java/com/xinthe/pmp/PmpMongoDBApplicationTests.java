@@ -1,4 +1,4 @@
-package com.xinthe.pmp;
+package com.xinthe.pms;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

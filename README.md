@@ -76,7 +76,7 @@ Or
    
 3. #### Model class
     Below are the model classes which we will store in MongoDB and perform CRUD operations.  
-    **model.com.xinthe.pmp.SuperHero.java**  
+    **model.com.xinthe.pms.SuperHero.java**  
     ```
     @Data
     @AllArgsConstructor
@@ -97,7 +97,7 @@ Or
         // Constructor, Getter and Setter
     }
     ```
-    **model.com.xinthe.pmp.Employee.java**  
+    **model.com.xinthe.pms.Employee.java**  
     ```
     @Data
     @AllArgsConstructor
@@ -120,7 +120,7 @@ Or
    
 4. #### CRUD operation for Super Heroes
 
-    In **controller.com.xinthe.pmp.SuperHeroController.java** class, 
+    In **controller.com.xinthe.pms.SuperHeroController.java** class, 
     we have exposed 5 endpoints for basic CRUD operations
     - GET All Super Heroes
     - GET by ID
@@ -150,19 +150,19 @@ Or
     }
     ```
    
-    In **repository.com.xinthe.pmp.SuperHeroRepository.java**, we are extending `MongoRepository<Class, ID>` interface which enables CRUD related methods.
+    In **repository.com.xinthe.pms.SuperHeroRepository.java**, we are extending `MongoRepository<Class, ID>` interface which enables CRUD related methods.
     ```
     public interface SuperHeroRepository extends MongoRepository<SuperHero, String> {
     }
     ```
    
-   In **impl.service.com.xinthe.pmp.SuperHeroServiceImpl.java**, we are autowiring above interface using `@Autowired` annotation and doing CRUD operation.
+   In **impl.service.com.xinthe.pms.SuperHeroServiceImpl.java**, we are autowiring above interface using `@Autowired` annotation and doing CRUD operation.
 
 
 
 5. #### JPA And Query operation for Employee
-    In **controller.com.xinthe.pmp.EmployeeController.java** class JPA related queries API Endpoints are placed.
-    In **controller.com.xinthe.pmp.EmployeeQueryController.java** class Mongo queries API Endpoints are placed.
+    In **controller.com.xinthe.pms.EmployeeController.java** class JPA related queries API Endpoints are placed.
+    In **controller.com.xinthe.pms.EmployeeQueryController.java** class Mongo queries API Endpoints are placed.
     
  
  
