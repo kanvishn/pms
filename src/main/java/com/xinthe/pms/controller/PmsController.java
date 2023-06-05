@@ -2,7 +2,7 @@ package com.xinthe.pms.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.xinthe.pms.model.PmsCollection;
+import com.xinthe.pms.model.Project;
 import com.xinthe.pms.service.PmsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -39,9 +39,9 @@ public class PmsController {
     @HystrixCommand(fallbackMethod = "getAllCollectionsFallback", commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "20000")
     })
-    public ResponseEntity<List<PmsCollection>> getAllCollections() {
+    public ResponseEntity<List<Project>> getAllCollections() {
         logger.info("Getting all collections");
-        List<PmsCollection> collections = pmsService.getAllCollections();
+        List<Project> collections = pmsService.getAllCollections();
         return new ResponseEntity<>(collections, HttpStatus.OK);
     }
 
@@ -50,9 +50,9 @@ public class PmsController {
     @HystrixCommand(fallbackMethod = "getCollectionByIdFallback", commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "20000")
     })
-    public ResponseEntity<PmsCollection> getCollectionById(@PathVariable("id") String id) {
+    public ResponseEntity<Project> getCollectionById(@PathVariable("id") String id) {
         logger.info("Getting collection by ID: {}", id);
-        PmsCollection collection = pmsService.getCollectionById(id);
+        Project collection = pmsService.getCollectionById(id);
         return new ResponseEntity<>(collection, HttpStatus.OK);
     }
 
@@ -61,9 +61,9 @@ public class PmsController {
     @HystrixCommand(fallbackMethod = "createCollectionFallback", commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "20000")
     })
-    public ResponseEntity<PmsCollection> createCollection(@RequestBody PmsCollection collection) {
+    public ResponseEntity<Project> createCollection(@RequestBody Project collection) {
         logger.info("Creating a new collection");
-        PmsCollection createdCollection = pmsService.createCollection(collection);
+        Project createdCollection = pmsService.createCollection(collection);
         return new ResponseEntity<>(createdCollection, HttpStatus.CREATED);
     }
 
@@ -72,9 +72,9 @@ public class PmsController {
     @HystrixCommand(fallbackMethod = "updateCollectionFallback", commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "20000")
     })
-    public ResponseEntity<PmsCollection> updateCollection(@PathVariable("id") String id, @RequestBody PmsCollection collection) {
+    public ResponseEntity<Project> updateCollection(@PathVariable("id") String id, @RequestBody Project collection) {
         logger.info("Updating collection with ID: {}", id);
-        PmsCollection updatedCollection = pmsService.updateCollection(id, collection);
+        Project updatedCollection = pmsService.updateCollection(id, collection);
         return new ResponseEntity<>(updatedCollection, HttpStatus.OK);
     }
 
@@ -90,28 +90,28 @@ public class PmsController {
     }
 
     // Fallback methods
-    public ResponseEntity<List<PmsCollection>> getAllCollectionsFallback() {
+    public ResponseEntity<List<Project>> getAllCollectionsFallback() {
         logger.error("Fallback method called: getAllCollectionsFallback");
         // Return an empty list or default response as needed
         return new ResponseEntity<>(Collections.emptyList(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    public ResponseEntity<PmsCollection> getCollectionByIdFallback(String id) {
+    public ResponseEntity<Project> getCollectionByIdFallback(String id) {
         logger.error("Fallback method called: getCollectionByIdFallback");
         // Return a fallback collection or default response as needed
-        return new ResponseEntity<>(new PmsCollection(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(new Project(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    public ResponseEntity<PmsCollection> createCollectionFallback(PmsCollection collection) {
+    public ResponseEntity<Project> createCollectionFallback(Project collection) {
         logger.error("Fallback method called: createCollectionFallback");
         // Return a fallback collection or default response as needed
-        return new ResponseEntity<>(new PmsCollection(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(new Project(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    public ResponseEntity<PmsCollection> updateCollectionFallback(String id, PmsCollection collection) {
+    public ResponseEntity<Project> updateCollectionFallback(String id, Project collection) {
         logger.error("Fallback method called: updateCollectionFallback");
         // Return a fallback collection or default response as needed
-        return new ResponseEntity<>(new PmsCollection(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(new Project(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     public ResponseEntity<Void> deleteCollectionFallback(String id) {

@@ -1,7 +1,7 @@
 package com.xinthe.pms.utils;
 
 import com.xinthe.pms.model.Field;
-import com.xinthe.pms.model.PmsCollection;
+import com.xinthe.pms.model.Project;
 import com.xinthe.pms.model.Section;
 import com.xinthe.pms.model.Validation;
 
@@ -15,7 +15,7 @@ public class HelperUtil {
     private HelperUtil() {
     }
 
-    public static Supplier<List<PmsCollection>> pmsCollection = () ->
+    public static Supplier<List<Project>> Project = () ->
     {
         Field field1 = Field.builder()
                 .id("123")
@@ -55,9 +55,9 @@ public class HelperUtil {
         List<Section> sectionList = Arrays.asList(section1, section2);
 
         return Arrays.asList(
-                PmsCollection.builder().id("1").fProjectName("pms1").fCode("pms-001").fDescription("Project 1").fStartDate(new Date()).fEndDate(new Date()).fDomain("Project Management").fProgram("").fPortfolio("").fBudget("").fStatus("").fPriority("").fOwnerName("").fOwnerEmail("").fMethodology("").fCountry("IN").fState("AP").build(),
-                PmsCollection.builder().id("2").fProjectName("pms2").fCode("pms-002").fDescription("Project 2").fStartDate(new Date()).fEndDate(new Date()).fDomain("Project Management").fProgram("").fPortfolio("").fBudget("").fStatus("").fPriority("").fOwnerName("").fOwnerEmail("").fMethodology("").fCountry("IN").fState("AP").build(),
-                PmsCollection.builder().id("3").fProjectName("pms3").fCode("pms-003").fDescription("Project 3").fStartDate(new Date()).fEndDate(new Date()).fDomain("Project Management").fProgram("").fPortfolio("").fBudget("").fStatus("").fPriority("").fOwnerName("").fOwnerEmail("").fMethodology("").fCountry("IN").fState("AP").build());
+                com.xinthe.pms.model.Project.builder().id("1").fProjectName("pms1").fCode("pms-001").fDescription("Project 1").fStartDate(new Date()).fEndDate(new Date()).fDomain("Project Management").fProgram("").fPortfolio("").fBudget("").fStatus("").fPriority("").fOwnerName("").fOwnerEmail("").fMethodology("").fCountry("IN").fState("AP").build(),
+                com.xinthe.pms.model.Project.builder().id("2").fProjectName("pms2").fCode("pms-002").fDescription("Project 2").fStartDate(new Date()).fEndDate(new Date()).fDomain("Project Management").fProgram("").fPortfolio("").fBudget("").fStatus("").fPriority("").fOwnerName("").fOwnerEmail("").fMethodology("").fCountry("IN").fState("AP").build(),
+                com.xinthe.pms.model.Project.builder().id("3").fProjectName("pms3").fCode("pms-003").fDescription("Project 3").fStartDate(new Date()).fEndDate(new Date()).fDomain("Project Management").fProgram("").fPortfolio("").fBudget("").fStatus("").fPriority("").fOwnerName("").fOwnerEmail("").fMethodology("").fCountry("IN").fState("AP").build());
 
     };
 
